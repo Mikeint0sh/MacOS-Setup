@@ -153,11 +153,11 @@ cecho "Installing Node packages..." $green
 
 NODE_PACKAGES=(
     express
+    create-react-app
     @material-ui/core
+    serve
 )
-for i in "${NODE_PACKAGES[@]}"; do sudo npm install --save "$i"; done
-
-sudo npm install -g create-react-app
+for i in "${NODE_PACKAGES[@]}"; do sudo npm install -g "$i"; done
 
 cecho "Installing cocoapods" $green
 sudo gem install cocoapods
