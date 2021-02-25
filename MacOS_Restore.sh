@@ -128,6 +128,7 @@ CASKS=(
     slack
     spectacle
     macmediakeyforwarder
+    java
     xquartz
 )
 
@@ -154,8 +155,9 @@ cecho "Installing Node packages..." $green
 NODE_PACKAGES=(
     express
     create-react-app
-    @material-ui/core
     serve
+    firebase-tools
+    npm-check-updates
 )
 for i in "${NODE_PACKAGES[@]}"; do sudo npm install -g "$i"; done
 
@@ -167,6 +169,7 @@ cecho "Configuring git..." $green
 git config --global user.name Michael
 git config --global user.email 33352572+Mikeint0sh@users.noreply.github.com
 git config --global credential.helper osxkeychain  #Caches credentials so you don't have to enter your username and password every time you push
+git config --global init.defaultBranch main #All new git repositories' default (master) branch will be named 'main'
 echo '# Folder view configuration files\n.DS_Store\nDesktop.ini\n.AppleDouble\n.LSOverride\n' > ~/.gitignore  #Create a global gitignore
 echo '# Thumbnail cache files\n._*\nThumbs.db\n' >> ~/.gitignore
 echo '# Files that might appear on external disks\n.Spotlight-V100\n.Trashes\n.DocumentRevisions-V100\n.fseventsd\n.TemporaryItems\n.VolumeIcon.icns\n.com.apple.timemachine.donotpresent\n' >> ~/.gitignore
@@ -181,7 +184,7 @@ git config --global core.excludesfile ~/.gitignore
 #   Settings found in System Preferences   #
 ############################################
 
-cecho "Configuring OSX..." $green  #See https://github.com/mathiasbynens/dotfiles/blob/master/.macos for more
+cecho "Configuring macOS..." $green  #See https://github.com/mathiasbynens/dotfiles/blob/master/.macos for more
 
 # Close any open System Preferences panes, to prevent them from overriding settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
